@@ -98,6 +98,7 @@ public class BrokerService {
       LOG.error("Broker event skipped due to illegal content: {}", event);
       return;
     }
+    LOG.warn(">>>>>>>>>>> \n " + encodedTooling + "\n\n");
     eventService.publish(new BrokerEvent(event, parseTooling(encodedTooling)));
   }
 
