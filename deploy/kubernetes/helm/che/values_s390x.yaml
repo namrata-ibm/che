@@ -103,12 +103,18 @@ che:
   disableProbes: false
 
 cheDevfileRegistry:
-  image: prabhavthali/che-devfile-registry:7.9.0
   deploy: true
 
 chePluginRegistry:
-  image: prabhavthali/che-plugin-registry:7.9.0
   deploy: true
+
+che-devfile-registry:
+  cheDevfileRegistry:
+    image: prabhavthali/che-devfile-registry:7.9.0
+
+che-plugin-registry:
+  chePluginRegistry:
+    image: prabhavthali/che-plugin-registry:7.9.0
 
 prometheus:
   alertmanager:
