@@ -16,7 +16,7 @@
 cheWorkspaceHttpProxy: ""
 cheWorkspaceHttpsProxy: ""
 cheWorkspaceNoProxy: ""
-cheImage: prabhavthali/che-server:7.9.0
+cheImage: quay.io/eclipse/che-server-s390x:7.9.0
 cheImagePullPolicy: Always
 cheKeycloakRealm: "che"
 cheKeycloakClientId: "che-public"
@@ -110,11 +110,11 @@ chePluginRegistry:
 
 che-devfile-registry:
   cheDevfileRegistry:
-    image: prabhavthali/che-devfile-registry:7.9.0
+    image: quay.io/eclipse/che-devfile-registry-s390x:7.9.0
 
 che-plugin-registry:
   chePluginRegistry:
-    image: prabhavthali/che-plugin-registry:7.9.0
+    image: quay.io/eclipse/che-plugin-registry-s390x:7.9.0
 
 prometheus:
   alertmanager:
