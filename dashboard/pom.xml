@@ -132,10 +132,16 @@
                                 </goals>
                                 <configuration>
                                     <target>
+                                        <!-- check architecture using a script -->
+                                        <exec dir="${basedir}"  executable="/bin/bash" outputproperty="DOCKERFILE">
+                                            <arg value="arch.sh"/>
+                                        </exec>
                                         <!-- build user dashboard with maven -->
                                         <exec dir="${basedir}" executable="docker" failonerror="true">
                                             <arg value="build" />
                                             <arg value="-t" />
+                                            <arg value="-f"/>
+                                            <arg value="${DOCKERFILE}" />
                                             <arg value="eclipse-che-dashboard" />
                                             <arg value="." />
                                         </exec>
