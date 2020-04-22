@@ -7,8 +7,8 @@
 cheWorkspaceHttpProxy: ""
 cheWorkspaceHttpsProxy: ""
 cheWorkspaceNoProxy: ""
-cheImage: quay.io/eclipse/che-server-s390x:7.9.0
-cheImagePullPolicy: Always
+cheImage: quay.io/eclipse/che-server-s390x:7.11.0
+cheImagePullPolicy: Never
 cheKeycloakRealm: "che"
 cheKeycloakClientId: "che-public"
 #customOidcUsernameClaim: ""
