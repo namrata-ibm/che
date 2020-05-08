@@ -5,9 +5,9 @@
 #
 # SPDX-License-Identifier: EPL-2.0
 #
-FROM openjdk:8u242-jre-slim
+FROM openjdk:8-jre-alpine
 ENV LANG=C.UTF-8
-RUN echo "%root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && rm -rf /tmp/*
+RUN echo "%root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && rm -rf /tmp/* && apk --no-cache add bash
 EXPOSE 8000 8080
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
