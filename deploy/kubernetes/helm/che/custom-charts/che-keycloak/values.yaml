@@ -13,3 +13,5 @@
 
 image: quay.io/eclipse/che-keycloak:7.11.0
 requireAdminPasswordChange: true
+keycloakAdminUserName: admin
+keycloakAdminUserPassword: admin
