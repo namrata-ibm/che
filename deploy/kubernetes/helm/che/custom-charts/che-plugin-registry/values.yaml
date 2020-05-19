@@ -9,6 +9,6 @@
 
 chePluginRegistry:
   image: quay.io/eclipse/che-plugin-registry:nightly
-  imagePullPolicy: Always
+  imagePullPolicy: IfNotPresent
   memoryLimit: 256Mi
   memoryRequests: 16Mi
