@@ -12,4 +12,12 @@ base_dir=$(cd "$(dirname "$0")"; pwd)
 . "${base_dir}"/../build.include
 
 init --name:keycloak "$@"
+
+ARCH="$(uname -m)"
+if [ "${ARCH}" == "s390x" ]; then
+    git clone https://github.com/keycloak/keycloak-containers.git
+    cd keycloak-containers && git checkout tags/6.0.1
+    docker build -t jboss/keycloak:6.0.1 -f server/Dockerfile .
+fi
+
 build
