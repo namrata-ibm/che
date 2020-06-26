@@ -13,11 +13,13 @@ base_dir=$(cd "$(dirname "$0")"; pwd)
 
 init --name:keycloak "$@"
 
+VERSION=6.0.1
 ARCH="$(uname -m)"
 if [ "${ARCH}" == "s390x" ]; then
+    VERSION=9.0.0
     git clone https://github.com/keycloak/keycloak-containers.git
-    cd keycloak-containers && git checkout tags/6.0.1
-    docker build -t jboss/keycloak:6.0.1 -f server/Dockerfile .
+    cd keycloak-containers && git checkout tags/${VERSION}
+    docker build -t jboss/keycloak:${VERSION} -f server/Dockerfile .
 fi
 
 build

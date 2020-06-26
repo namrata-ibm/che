@@ -6,7 +6,7 @@
 # SPDX-License-Identifier: EPL-2.0
 #
 
-FROM jboss/keycloak:6.0.1
+FROM jboss/keycloak:${VERSION}
 ADD che /opt/jboss/keycloak/themes/che
 ADD . /scripts/
 ADD cli /scripts/cli
