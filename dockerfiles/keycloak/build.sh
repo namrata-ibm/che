@@ -19,7 +19,7 @@ if [ "${ARCH}" == "s390x" ]; then
     VERSION=9.0.0
     git clone https://github.com/keycloak/keycloak-containers.git
     cd keycloak-containers && git checkout tags/${VERSION}
-    docker build -t jboss/keycloak:${VERSION} -f server/Dockerfile .
+    cd server && docker build --build-arg GIT_REPO=keycloak/keycloak --build-arg GIT_BRANCH=master -t jboss/keycloak:${VERSION} .
 fi
 
 build
