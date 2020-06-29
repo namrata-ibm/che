@@ -16,7 +16,7 @@ init --name:keycloak "$@"
 VERSION=6.0.1
 ARCH="$(uname -m)"
 if [ "${ARCH}" == "s390x" ]; then
-    VERSION=9.0.0
+    VERSION=7.0.1
     git clone https://github.com/keycloak/keycloak-containers.git
     cd keycloak-containers && git checkout tags/${VERSION}
     cd server && docker build --build-arg GIT_REPO=keycloak/keycloak --build-arg GIT_BRANCH=${VERSION} -t jboss/keycloak:${VERSION} .
