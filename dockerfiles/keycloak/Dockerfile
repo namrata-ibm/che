@@ -11,12 +11,14 @@ ADD che /opt/jboss/keycloak/themes/che
 ADD . /scripts/
 ADD cli /scripts/cli
 
+USER root
+RUN if [ "$(uname -m)" = "s390x" ]; then microdnf update -y && microdnf install -y unzip && microdnf clean all; fi
+
 RUN ln -s /opt/jboss/tools/docker-entrypoint.sh && \
     curl -sSL https://github.com/che-incubator/KEYCLOAK-10169-OpenShift4-User-Provider/releases/download/6.0.1-openshift-v4/openshift4-extension-6.0.1.jar -o /opt/jboss/keycloak/standalone/deployments/openshift4-extension-6.0.1.jar && \
-    unzip -j /opt/jboss/keycloak/standalone/deployments/openshift4-extension-6.0.1.jar -d /opt/jboss/keycloak/themes/base/admin/resources/partials \
+    unzip -o -j /opt/jboss/keycloak/standalone/deployments/openshift4-extension-6.0.1.jar -d /opt/jboss/keycloak/themes/base/admin/resources/partials \
     theme-resources/resources/realm-identity-provider-openshift-v4.html theme-resources/resources/realm-identity-provider-openshift-v4-ext.html
 
-USER root
 RUN chown -R 1000:0 /scripts && \
     chmod -R g+rwX /scripts
 
