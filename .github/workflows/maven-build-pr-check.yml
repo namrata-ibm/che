@@ -45,22 +45,17 @@ jobs:
             distro: ubuntu20.04
     steps:
     - uses: actions/checkout@v2
-    - name: Cache local Maven repository
-      uses: actions/cache@v2
+    - uses: actions/setup-java@v1
+    - uses: actions/cache@v2
+    - uses: uraimo/run-on-arch-action@v2.0.5
       with:
        path: ~/.m2/repository
        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
        restore-keys: |
         ${{ runner.os }}-maven-      
-    - name: Set up JDK 11
-      uses: actions/setup-java@v1
-      with:
-        java-version: 11
-    - name: Build with Maven
-      uses: uraimo/run-on-arch-action@v2.0.5
-      with:
-        arch: ${{ matrix.arch }}
-        distro: ${{ matrix.distro }}
-        shell: /bin/bash
-        run: |
+       java-version: 11
+       arch: ${{ matrix.arch }}
+       distro: ${{ matrix.distro }}
+       shell: /bin/bash
+       run: |
           mvn -B clean install -U -Pintegration
