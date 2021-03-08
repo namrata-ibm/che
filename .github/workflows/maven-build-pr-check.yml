@@ -60,6 +60,7 @@ jobs:
       with:  
        arch: ${{ matrix.arch }}
        distro: ${{ matrix.distro }}
+       shell: /bin/bash
        run: |
         apt-get install -y curl
         curl -sL https://www-eu.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip -o maven.zip
