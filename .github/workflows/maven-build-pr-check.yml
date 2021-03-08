@@ -55,7 +55,7 @@ jobs:
        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
        restore-keys: |
         ${{ runner.os }}-maven-  
-    - uses: uraimo/run-on-arch-action@v2.0.5
+    - uses: uraimo/run-on-arch-action@v2.0.8
       with:  
        arch: ${{ matrix.arch }}
        distro: ${{ matrix.distro }}
