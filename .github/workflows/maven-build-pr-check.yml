@@ -44,7 +44,7 @@ jobs:
             distro: ubuntu20.04
     steps:
     - uses: actions/checkout@v2
-    
+    - uses: uraimo/run-on-arch-action@v2.0.8
     - uses: actions/setup-java@v1
       with:
         java-version: 11
@@ -55,8 +55,8 @@ jobs:
        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
        restore-keys: |
         ${{ runner.os }}-maven-  
+        
     - name : Build with Maven
-      uses: uraimo/run-on-arch-action@v2.0.8
       with:  
        arch: ${{ matrix.arch }}
        distro: ${{ matrix.distro }}
