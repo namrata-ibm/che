@@ -22,8 +22,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - arch: amd64
-            distro: ubuntu20.04
           - arch: s390x
             distro: ubuntu20.04
     steps:
