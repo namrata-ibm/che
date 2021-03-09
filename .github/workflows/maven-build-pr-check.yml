@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - arch: ppc64le
+          - arch: s390x
             distro: ubuntu20.04
     steps:
     - uses: actions/checkout@v2
@@ -42,6 +42,7 @@ jobs:
        distro: ${{ matrix.distro }}
        shell: /bin/bash
        run: |
+        ulimit -c unlimited
         apt-get update
         apt-get install -y curl unzip openjdk-11-jdk 
         export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-s390x
