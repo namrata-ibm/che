@@ -15,13 +15,15 @@ on:
       - GA-native-build-s390x
 
 jobs:    
-  build-on-s390x:
+  build-run-on-action:
     runs-on: ubuntu-20.04
     name: Build on ${{ matrix.distro }} ${{ matrix.arch }}
     
     strategy:
       matrix:
         include:
+          - arch: amd64
+            distro: ubuntu20.04
           - arch: s390x
             distro: ubuntu20.04
     steps:
@@ -45,10 +47,9 @@ jobs:
        distro: ${{ matrix.distro }}
        shell: /bin/bash
        run: |
-        apt-get install -y curl
-        curl -sL https://www-eu.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip -o maven.zip
         apt-get update
-        apt-get -y install unzip
+        apt-get install -y curl unzip
+        curl -sL https://www-eu.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip -o maven.zip
         unzip -d /usr/share maven.zip
         rm maven.zip
         ln -s /usr/share/apache-maven-3.6.3/bin/mvn /usr/bin/mvn
