@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - arch: s390x
+          - arch: ppc64le
             distro: ubuntu20.04
     steps:
     - uses: actions/checkout@v2
