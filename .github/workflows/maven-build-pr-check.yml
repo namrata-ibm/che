@@ -45,6 +45,7 @@ jobs:
         ulimit -c unlimited
         apt-get update
         apt-get install -y curl unzip tar 
+        mkdir -p /opt/adopt/java
         curl -SL -o adoptjdk.tar.gz https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.8%2B10_openj9-0.21.0/OpenJDK11U-jdk_s390x_linux_openj9_11.0.8_10_openj9-0.21.0.tar.gz
         tar -zxvf adoptjdk.tar.gz -C /opt/adopt/java
         export JAVA_HOME=/opt/adopt/java
