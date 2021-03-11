@@ -34,10 +34,6 @@ jobs:
        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
        restore-keys: |
         ${{ runner.os }}-maven-  
-    - name: Set up JDK 8
-      uses: actions/setup-java@v1
-      with:
-        java-version: 8 
     - name : Build with Maven
       uses: uraimo/run-on-arch-action@v2.0.8
       with:  
@@ -46,7 +42,11 @@ jobs:
        shell: /bin/bash
        run: |
         apt-get update
-        apt-get install -y curl unzip tar 
+        apt-get install -y curl unzip tar wget
+        wget https://github.com/AdoptOpenJDK/openjdk8-binaries/releases/download/jdk8u252-b09_openj9-0.20.0/OpenJDK8U-jdk_s390x_linux_openj9_8u252b09_openj9-0.20.0.tar.gz
+        tar -xvf OpenJDK8U-jdk_s390x_linux_openj9_8u252b09_openj9-0.20.0.tar.gz
+        export JAVA_HOME=$PWD/jdk8u252-b09
+        export PATH=$JAVA_HOME/bin:$PATH
         export JAVA_TOOL_OPTIONS='-Xmx2g'
         curl -sL https://www-eu.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip -o maven.zip
         unzip -d /usr/share maven.zip
