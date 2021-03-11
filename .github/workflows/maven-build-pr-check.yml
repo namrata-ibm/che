@@ -44,14 +44,12 @@ jobs:
        run: |
         ulimit -c unlimited
         apt-get update
-        apt-get install -y curl unzip tar wget
-        wget http://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/8.0.6.15/linux/s390x/ibm-java-s390x-sdk-8.0-6.15.bin
-        echo -en 'INSTALLER_UI=silent\nUSER_INSTALL_DIR=/opt/java-1.8.0-ibm\nLICENSE_ACCEPTED=TRUE' > installer.properties
-        bash ibm-java-s390x-sdk-8.0-6.15.bin -i silent -f installer.properties || true
-        export JAVA_HOME=/opt/java-1.8.0-ibm
-        export PATH=$JAVA_HOME/bin:$PATH
-        export JAVA_TOOL_OPTIONS='-Xmx2048M'
-        java -version
+        apt-get install -y curl unzip tar 
+        curl -SL -o adoptjdk.tar.gz https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.8%2B10_openj9-0.21.0/OpenJDK11U-jdk_s390x_linux_openj9_11.0.8_10_openj9-0.21.0.tar.gz
+        tar -zxvf adoptjdk.tar.gz -C /opt/adopt/java
+        export JAVA_HOME=/opt/adopt/java
+			  export PATH=$JAVA_HOME/bin:$PATH
+        export JAVA_TOOL_OPTIONS='-Xmx2g'
         curl -sL https://www-eu.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip -o maven.zip
         unzip -d /usr/share maven.zip
         rm maven.zip
