@@ -42,7 +42,7 @@ jobs:
        shell: /bin/bash
        run: |
         apt-get update
-        apt-get install -y curl unzip openjdk-11-jdk
+        apt-get install -y curl unzip openjdk-11-jdk ca-certificates-java
         export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-s390x
         export PATH=$JAVA_HOME/bin:$PATH
         curl -sL https://www-eu.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip -o maven.zip
