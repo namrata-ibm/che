@@ -47,7 +47,7 @@ jobs:
         apt-get install -y curl unzip tar 
         mkdir -p /opt/adopt/java
         curl -SL -o adoptjdk.tar.gz https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.8%2B10_openj9-0.21.0/OpenJDK11U-jdk_s390x_linux_openj9_11.0.8_10_openj9-0.21.0.tar.gz
-        tar -zxvf adoptjdk.tar.gz -C /opt/adopt/java
+        tar -zxvf adoptjdk.tar.gz -C /opt/adopt/java --strip-components 1
         export JAVA_HOME=/opt/adopt/java
         export PATH=$JAVA_HOME/bin:$PATH
         export JAVA_TOOL_OPTIONS='-Xmx2g'
