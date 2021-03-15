@@ -42,8 +42,11 @@ jobs:
        shell: /bin/bash
        run: |
         apt-get update
-        apt-get install -y curl unzip openjdk-11-jdk ca-certificates-java
-        export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-s390x
+        apt-get install -y curl unzip 
+        mkdir -p /opt/adoptj9/java
+        curl -SL -o adoptjdk.tar.gz https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.10%2B9_openj9-0.24.0/OpenJDK11U-jdk_s390x_linux_openj9_11.0.10_9_openj9-0.24.0.tar.gz
+        tar -zxvf adoptjdk.tar.gz -C /opt/adoptj9/java --strip-components 1
+        export JAVA_HOME=/opt/adoptj9/java
         export PATH=$JAVA_HOME/bin:$PATH
         curl -sL https://www-eu.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip -o maven.zip
         unzip -d /usr/share maven.zip
