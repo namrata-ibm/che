@@ -41,6 +41,7 @@ jobs:
        distro: ${{ matrix.distro }}
        shell: /bin/bash
        run: |
+        ulimit -c unlimited
         apt-get update
         apt-get install -y curl unzip 
         mkdir -p /opt/adoptj9/java
