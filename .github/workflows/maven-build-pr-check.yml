@@ -41,6 +41,7 @@ jobs:
        distro: ${{ matrix.distro }}
        shell: /bin/bash
        run: |
+        mv $PWD/core core1
         ulimit -c unlimited
         apt-get update
         apt-get install -y curl unzip 
