@@ -41,10 +41,7 @@ jobs:
        distro: ${{ matrix.distro }}
        shell: /bin/bash
        run: |
-        chmod +x /proc/sys/kernel/core_pattern
-        mkdir -p /tmp/cores
-        chmod a+rwx /tmp/cores
-        echo "/tmp/cores/core.%e.%p.%h.%t" > /proc/sys/kernel/core_pattern
+        kernel.core_pattern = /tmp/core-%e-%s-%u-%g-%p-%t.%P
         ulimit -c unlimited
         apt-get update
         apt-get install -y curl unzip 
