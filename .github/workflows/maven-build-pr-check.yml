@@ -53,8 +53,8 @@ jobs:
         java-version: 11
     - name: Run build 
       uses: uraimo/run-on-arch-action@v1.0.9
-        with:
-          architecture: s390x
-          distribution: ubuntu18.04
-          run: mvn -B clean install -U -Pintegration
+      with:
+        architecture: s390x
+        distribution: ubuntu18.04
+        run: mvn -B clean install -U -Pintegration
     
