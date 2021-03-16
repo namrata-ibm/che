@@ -55,4 +55,5 @@ jobs:
         ln -s /usr/share/apache-maven-3.6.3/bin/mvn /usr/bin/mvn
         export M2_HOME=/usr/share/apache-maven-3.6.3
         export PATH=/usr/share/apache-maven-3.6.3/bin:$PATH
+        export MAVEN_OPTS="-Xmx2048m"
         mvn -B -X clean install -U -Pintegration
