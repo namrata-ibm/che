@@ -44,10 +44,10 @@ jobs:
         ulimit -c unlimited
         apt-get update
         apt-get install -y curl unzip sudo
-        sudo mkdir -p /opt/openjdk/java
-        curl -SL -o optjdk.tar.gz https://github.com/openjdk/jdk12u/archive/jdk-12.0.2+10.tar.gz
-        sudo tar -zxvf optjdk.tar.gz -C /opt/openjdk/java --strip-components 1
-        export JAVA_HOME=/opt/openjdk/java
+        sudo mkdir -p /opt/adoptpenjdk/java
+        curl -SL -o adoptjdk.tar.gz https://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk12u-2019-09-10-13-21/OpenJDK12U-jdk_s390x_linux_openj9_2019-09-10-13-21.tar.gz
+        sudo tar -zxvf adoptjdk.tar.gz -C /opt/adoptopenjdk/java --strip-components 1
+        export JAVA_HOME=/opt/adoptopenjdk/java
         export PATH=$JAVA_HOME/bin:$PATH
         curl -sL https://www-eu.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip -o maven.zip
         unzip -d /usr/share maven.zip
@@ -55,4 +55,4 @@ jobs:
         ln -s /usr/share/apache-maven-3.6.3/bin/mvn /usr/bin/mvn
         export M2_HOME=/usr/share/apache-maven-3.6.3
         export PATH=/usr/share/apache-maven-3.6.3/bin:$PATH
-        mvn -B clean install -U -Pintegration
+        mvn -B -X clean install -U -Pintegration
