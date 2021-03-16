@@ -44,7 +44,7 @@ jobs:
         ulimit -c unlimited
         apt-get update
         apt-get install -y curl unzip sudo
-        sudo mkdir -p /opt/adoptpenjdk/java
+        sudo mkdir -p /opt/adoptopenjdk/java
         curl -SL -o adoptjdk.tar.gz https://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk12u-2019-09-10-13-21/OpenJDK12U-jdk_s390x_linux_openj9_2019-09-10-13-21.tar.gz
         sudo tar -zxvf adoptjdk.tar.gz -C /opt/adoptopenjdk/java --strip-components 1
         export JAVA_HOME=/opt/adoptopenjdk/java
