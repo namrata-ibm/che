@@ -46,7 +46,7 @@ jobs:
         architecture: s390x
         distribution: ubuntu18.04
         run: | 
-          apt-get update && apt-get install -y wget maven openjdk-11-jre
+          apt-get update && apt-get install -y wget maven
           mvn -v
           export MAVEN_OPTS=-Xmx2g
           mvn -B clean install -U -Pintegration
