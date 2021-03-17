@@ -49,7 +49,7 @@ jobs:
          apt-get update && apt-get install -y wget curl binutils* 
          mkdir -p /opt/adoptj9/java
          ls /opt/adoptj9
-         curl -SL -o adoptjdk.tar.gz https://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk-12.0.2%2B10_openj9-0.15.1/OpenJDK12U-jdk_s390x_linux_openj9_12.0.2_10_openj9-0.15.1.tar.gz
+         curl -SL -o adoptjdk.tar.gz https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.10%2B9_openj9-0.24.0/OpenJDK11U-jdk_s390x_linux_openj9_11.0.10_9_openj9-0.24.0.tar.gz
          tar -zxf adoptjdk.tar.gz -C /opt/adoptj9/java --strip-components 1
          echo "tar complete"
          ls /opt/adoptj9/java
@@ -62,5 +62,9 @@ jobs:
          export PATH=`pwd`/apache-maven-3.6.3/bin/:$PATH  
          export MAVEN_OPTS=-Xmx2g
          export _JAVA_OPTIONS="-Djava.compiler=NONE"
+         export MAVEN_OPTS=-Xmx2g
+         export _JAVA_TOOL_OPTIONS="-Djava.compiler=NONE"
+         mvn -v
+         mvn -B -X -e clean install -U -Pintegration		 
 
     
