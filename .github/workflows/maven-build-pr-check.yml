@@ -34,7 +34,7 @@ jobs:
 #      run: mvn -B clean install -U -Pintegration
 
   build-on-z:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.10
     steps:
     - uses: actions/checkout@v2
     - name: Enable running multiple architectures
@@ -44,9 +44,9 @@ jobs:
       uses: uraimo/run-on-arch-action@v1.0.9
       with:
         architecture: s390x
-        distribution: ubuntu18.04
+        distribution: ubuntu20.10
         run: | 
-         apt-get update && apt-get install -y wget curl binutils* openjdk-8-jdk
+         apt-get update && apt-get install -y wget curl binutils* openjdk-15-jdk
          java -version
          wget https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz 
          tar -xzf apache-maven-3.6.3-bin.tar.gz  
