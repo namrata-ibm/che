@@ -40,17 +40,13 @@ jobs:
     - name: Enable running multiple architectures
       run: |
         sudo docker run --rm --privileged linuxkit/binfmt:4ea3b9b0938cbd19834c096aa31ff475cc75d281
-    - name: Set up JDK 11
-      uses: actions/setup-java@v1
-      with:
-        java-version: 11
     - name: Run build 
       uses: uraimo/run-on-arch-action@v1.0.9
       with:
         architecture: s390x
         distribution: ubuntu18.04
         run: | 
-          apt-get update && apt-get install -y wget maven
+          apt-get update && apt-get install -y wget maven openjdk-11-jre
           mvn -v
           export MAVEN_OPTS=-Xmx2g
           mvn -B clean install -U -Pintegration
