@@ -60,8 +60,8 @@ jobs:
          wget https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz 
          tar -xzf apache-maven-3.6.3-bin.tar.gz  
          export PATH=`pwd`/apache-maven-3.6.3/bin/:$PATH  
-         mvn -v 
          export MAVEN_OPTS=-Xmx2g
-         export _JAVA_OPTIONS="-Xjit:disableMccFreeBlockRecycling  -Xms256m -Xmx512m"
+         export _JAVA_OPTIONS="-Djava.compiler=NONE"
+         mvn -v 
          mvn -B -X -e clean install -U -Pintegration
     
