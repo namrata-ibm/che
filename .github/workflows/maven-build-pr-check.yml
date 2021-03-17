@@ -53,7 +53,6 @@ jobs:
          export PATH=`pwd`/apache-maven-3.6.3/bin/:$PATH  
          mvn -v 
          export MAVEN_OPTS=-Xmx2g
-         export _JAVA_OPTIONS="-Xjit:disableMccFreeBlockRecycling -Xms256m -Xmx512m"
-         export _JAVA_TOOL_OPTIONS="-Xjit:disableMccFreeBlockRecycling=true"
+         export _JAVA_OPTIONS="-Xms256m -Xmx512m"
          mvn -B -X -e clean install -U -Pintegration
     
