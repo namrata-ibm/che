@@ -44,7 +44,7 @@ jobs:
       uses: uraimo/run-on-arch-action@v2.0.9
       with:
         arch: s390x
-        distr0: ubuntu20.04
+        distro: ubuntu20.04
         run: | 
          apt-get update && apt-get install -y wget curl binutils* openjdk-14-jdk
          java -version
