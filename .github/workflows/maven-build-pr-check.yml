@@ -50,6 +50,8 @@ jobs:
          mkdir -p /opt/adoptj9/java
          curl -SL -o adoptjdk.tar.gz https://github.com/AdoptOpenJDK/openjdk12-binaries/releases/download/jdk-12.0.2%2B10_openj9-0.15.1/OpenJDK12U-jdk_x64_linux_openj9_linuxXL_12.0.2_10_openj9-0.15.1.tar.gz
          tar -zxf adoptjdk.tar.gz -C /opt/adoptj9/java --strip-components 1
+         ls /opt/adoptj9/java
+         ls /opt/adoptj9/java/bin
          export JAVA_HOME=/opt/adoptj9/java
          export PATH=$JAVA_HOME/bin:$PATH
          java -version
