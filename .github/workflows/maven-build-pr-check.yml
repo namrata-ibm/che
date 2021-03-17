@@ -46,12 +46,7 @@ jobs:
         architecture: s390x
         distribution: ubuntu18.04
         run: | 
-         apt-get update && apt-get install -y wget curl binutils*
-         mkdir -p /opt/adoptj9/java
-         curl -SL -o adoptjdk.tar.gz https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15.0.2%2B7_openj9-0.24.0/OpenJDK15U-jdk_s390x_linux_openj9_15.0.2_7_openj9-0.24.0.tar.gz
-         tar -zxf adoptjdk.tar.gz -C /opt/adoptj9/java --strip-components 1
-         export JAVA_HOME=/opt/adoptj9/java
-         export PATH=$JAVA_HOME/bin:$PATH
+         apt-get update && apt-get install -y wget curl binutils* openjdk-8-jdk
          java -version
          wget https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz 
          tar -xzf apache-maven-3.6.3-bin.tar.gz  
