@@ -34,7 +34,7 @@ jobs:
 #      run: mvn -B clean install -U -Pintegration
 
   build-on-z:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v2
     - name: Enable running multiple architectures
@@ -44,7 +44,7 @@ jobs:
       uses: uraimo/run-on-arch-action@v2.0.9
       with:
         arch: s390x
-        distro: ubuntu20.04
+        distro: ubuntu18.04
         run: | 
          apt-get update && apt-get install -y wget curl binutils* 
          apt-get install -y build-essential gcc g++ openjdk-8-jdk libffi-dev autoconf make git unzip zip \
