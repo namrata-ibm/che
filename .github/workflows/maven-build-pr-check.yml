@@ -58,6 +58,8 @@ jobs:
          ls  ./build/*/images/jdk/bin
          export JAVA_HOME=`pwd`/build/*/images/jdk
          export PATH=$JAVA_HOME/bin:$PATH 
+         cp ./build/*/images/jdk/bin/java /usr/bin
+         java -v || true
          wget https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz 
          tar -xzf apache-maven-3.6.3-bin.tar.gz  
          export PATH=`pwd`/apache-maven-3.6.3/bin/:$PATH  
