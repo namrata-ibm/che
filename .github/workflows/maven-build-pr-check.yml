@@ -47,16 +47,17 @@ jobs:
         distro: ubuntu20.04
         run: | 
          apt-get update && apt-get install -y wget curl binutils* 
-         mkdir -p /opt/adoptj9/java
-         ls /opt/adoptj9
-         curl -SL -o adoptjdk.tar.gz https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.10%2B9_openj9-0.24.0/OpenJDK11U-jdk_s390x_linux_openj9_11.0.10_9_openj9-0.24.0.tar.gz
-         tar -zxf adoptjdk.tar.gz -C /opt/adoptj9/java --strip-components 1
-         echo "tar complete"
-         ls /opt/adoptj9/java
-         ls /opt/adoptj9/java/bin
-         export JAVA_HOME=/opt/adoptj9/java
-         export PATH=$JAVA_HOME/bin:$PATH
-         java -version
+         apt-get install -y build-essential gcc g++ openjdk-8-jdk libffi-dev autoconf make git
+         git clone https://github.com/openjdk/jdk
+         cd jdk
+         git checkout jdk-15+22
+         bash configure --enable-debug --with-jvm-variants=server --enable-dtrace
+         make images
+         echo "JDK build complete"
+         ./build/*/images/jdk/bin/java -version
+         ls  ./build/*/images/jdk/bin
+         export JAVA_HOME=`pwd`/build/*/images/jdk
+         export PATH=$JAVA_HOME/bin:$PATH 
          wget https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz 
          tar -xzf apache-maven-3.6.3-bin.tar.gz  
          export PATH=`pwd`/apache-maven-3.6.3/bin/:$PATH  
