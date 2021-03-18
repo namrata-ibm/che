@@ -47,19 +47,22 @@ jobs:
         distro: ubuntu20.04
         run: | 
          apt-get update && apt-get install -y wget curl binutils* 
-         apt-get install -y build-essential gcc g++ openjdk-8-jdk libffi-dev autoconf make git unzip
+         apt-get install -y build-essential gcc g++ openjdk-8-jdk libffi-dev autoconf make git unzip zip \
+         libx11-dev libxext-dev libxrender-dev libxrandr-dev libxtst-dev libxt-dev libcups2-dev libfontconfig1-dev libasound2-dev
+         wget https://github.com/AdoptOpenJDK/openjdk15-binaries/releases/download/jdk-15.0.2%2B7_openj9-0.24.0/OpenJDK15U-jdk_s390x_linux_openj9_15.0.2_7_openj9-0.24.0.tar.gz
+         tar -zxf OpenJDK15U-jdk_s390x_linux_openj9_15.0.2_7_openj9-0.24.0.tar.gz
+         export JAVA_HOME=`pwd`/jdk-15.0.2+7
+         export PATH=$JAVA_HOME/bin:$PATH
          git clone https://github.com/openjdk/jdk
          cd jdk
          git checkout jdk-15+22
-         bash configure --enable-debug --with-jvm-variants=server --enable-dtrace
+         bash configure --enable-debug --with-jvm-variants=server 
          make images
          echo "JDK build complete"
          ./build/*/images/jdk/bin/java -version
          ls  ./build/*/images/jdk/bin
-         export JAVA_HOME=`pwd`/build/*/images/jdk
+         export JAVA_HOME=`pwd`/build/linux-s390x-server-fastdebug/images/jdk
          export PATH=$JAVA_HOME/bin:$PATH 
-         cp ./build/*/images/jdk/bin/java /usr/bin
-         java -v || true
          wget https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz 
          tar -xzf apache-maven-3.6.3-bin.tar.gz  
          export PATH=`pwd`/apache-maven-3.6.3/bin/:$PATH  
