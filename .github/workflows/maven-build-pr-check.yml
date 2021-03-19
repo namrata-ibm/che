@@ -56,8 +56,8 @@ jobs:
          git clone https://github.com/openjdk/jdk
          cd jdk
          git checkout jdk-11+28
-         bash configure --enable-debug --with-jvm-variants=server --disable-warnings-as-errors
-         make images JOBS=2
+         bash configure --with-jvm-variants=server --disable-warnings-as-errors
+         make images JOBS=1
          echo "JDK build complete"
          ./build/*/images/jdk/bin/java -version
          ls  ./build/*/images/jdk/bin
