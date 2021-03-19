@@ -46,31 +46,15 @@ jobs:
         arch: s390x
         distro: ubuntu20.04
         run: | 
-         apt-get update && apt-get install -y wget curl binutils* 
-         apt-get install -y build-essential gcc g++ openjdk-8-jdk libffi-dev autoconf make git unzip zip \
-         libx11-dev libxext-dev libxrender-dev libxrandr-dev libxtst-dev libxt-dev libcups2-dev libfontconfig1-dev libasound2-dev
-         wget https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.10%2B9_openj9-0.24.0/OpenJDK11U-jdk_s390x_linux_openj9_11.0.10_9_openj9-0.24.0.tar.gz
-         tar -zxf OpenJDK11U-jdk_s390x_linux_openj9_11.0.10_9_openj9-0.24.0.tar.gz
-         export JAVA_HOME=`pwd`/jdk-11.0.10+9
-         export PATH=$JAVA_HOME/bin:$PATH
-         git clone https://github.com/openjdk/jdk
-         cd jdk
-         git checkout jdk-11+28
-         bash configure --with-jvm-variants=server --disable-warnings-as-errors
-         make images JOBS=1
-         echo "JDK build complete"
-         ./build/*/images/jdk/bin/java -version
-         ls  ./build/*/images/jdk/bin
-         export JAVA_HOME=`pwd`/build/linux-s390x-server-fastdebug/images/jdk
-         export PATH=$JAVA_HOME/bin:$PATH 
+         apt-get update && apt-get install -y openjdk-8-jdk
+         apt-get install -y openjdk-11-jdk
+         java -version
+         apt-get install -y wget curl binutils* 
          wget https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz 
          tar -xzf apache-maven-3.6.3-bin.tar.gz  
          export PATH=`pwd`/apache-maven-3.6.3/bin/:$PATH  
          export MAVEN_OPTS=-Xmx2g
-         export _JAVA_OPTIONS="-Djava.compiler=NONE"
-         export MAVEN_OPTS=-Xmx2g
-         export _JAVA_TOOL_OPTIONS="-Djava.compiler=NONE"
          mvn -v
-         mvn -B -X -e clean install -U -Pintegration		 
+         mvn -B clean install -U -Pintegration		 
 
     
