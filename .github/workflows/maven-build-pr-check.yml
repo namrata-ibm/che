@@ -51,7 +51,7 @@ jobs:
          apt-get install ca-certificates-java
          apt-get install -y openjdk-11-jdk
          java -version
-         apt-get install -y wget curl binutils* 
+         apt-get install -y wget curl  
          wget https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz 
          tar -xzf apache-maven-3.6.3-bin.tar.gz  
          export PATH=`pwd`/apache-maven-3.6.3/bin/:$PATH  
