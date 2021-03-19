@@ -47,6 +47,8 @@ jobs:
         distro: ubuntu20.04
         run: | 
          apt-get update && apt-get install -y openjdk-8-jdk
+         java -version
+         apt-get install ca-certificates-java
          apt-get install -y openjdk-11-jdk
          java -version
          apt-get install -y wget curl binutils* 
