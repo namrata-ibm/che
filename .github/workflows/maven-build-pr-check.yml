@@ -55,7 +55,7 @@ jobs:
          wget https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz 
          tar -xzf apache-maven-3.6.3-bin.tar.gz  
          export PATH=`pwd`/apache-maven-3.6.3/bin/:$PATH  
-         export MAVEN_OPTS=-Xmx2g
+         export MAVEN_OPTS="-Xmx1g -XX:-TieredCompilation"
          mvn -v
          mvn -B clean install -U -Pintegration		 
 
