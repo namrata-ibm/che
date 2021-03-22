@@ -44,19 +44,17 @@ jobs:
       uses: uraimo/run-on-arch-action@v2.0.9
       with:
         arch: s390x
-        distro: ubuntu20.04
+        distro: alpine_latest
         run: | 
-         apt-get update && apt-get install -y openjdk-8-jdk
+         apk update && apk add openjdk11 --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
          java -version
-         apt-get install ca-certificates-java
-         apt-get install -y openjdk-11-jdk
-         java -version
-         apt-get install -y wget curl  
-         wget https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz 
-         tar -xzf apache-maven-3.6.3-bin.tar.gz  
-         export PATH=`pwd`/apache-maven-3.6.3/bin/:$PATH  
+         apk add wget
+         wget https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz
+         tar -xzf apache-maven-3.6.3-bin.tar.gz
+         export PATH=`pwd`/apache-maven-3.6.3/bin/:$PATH
          export MAVEN_OPTS="-Xmx1g -XX:-TieredCompilation"
          mvn -v
+         echo "done mvn -v"
          mvn -B clean install -U -Pintegration		 
 
     
