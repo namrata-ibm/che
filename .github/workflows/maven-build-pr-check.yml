@@ -33,7 +33,7 @@ jobs:
 #    - name: Build with Maven
 #      run: mvn -B clean install -U -Pintegration
 
-build-on-z:
+  build-on-z:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
