@@ -33,7 +33,7 @@ jobs:
 #    - name: Build with Maven
 #      run: mvn -B clean install -U -Pintegration
 
-  build-on-z:
+build-on-z:
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
@@ -44,17 +44,19 @@ jobs:
       uses: uraimo/run-on-arch-action@v2.0.9
       with:
         arch: s390x
-        distro: alpine_latest
+        distro: ubuntu20.04
         run: | 
-         apk update && apk add openjdk11 --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
+         apt-get update && apt-get install -y openjdk-8-jdk
+         ulimit -c unlimited
+         apt-get install -y openjdk-11-jdk
          java -version
-         apk add wget
-         wget https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz
-         tar -xzf apache-maven-3.6.3-bin.tar.gz
-         export PATH=`pwd`/apache-maven-3.6.3/bin/:$PATH
-         export MAVEN_OPTS="-Xmx1g -XX:-TieredCompilation"
+         apt-get install -y wget curl binutils* 
+         wget https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz 
+         tar -xzf apache-maven-3.6.3-bin.tar.gz  
+         export PATH=`pwd`/apache-maven-3.6.3/bin/:$PATH  
+         export MAVEN_OPTS=-Xmx2g
          mvn -v
-         echo "done mvn -v"
          mvn -B clean install -U -Pintegration		 
+
 
     
