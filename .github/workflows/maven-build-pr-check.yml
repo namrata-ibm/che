@@ -48,6 +48,7 @@ jobs:
         run: | 
          apt-get update && apt-get install -y openjdk-8-jdk
          ulimit -c unlimited
+         ulimit -a
          apt-get install -y openjdk-11-jdk
          java -version
          apt-get install -y wget curl binutils* 
