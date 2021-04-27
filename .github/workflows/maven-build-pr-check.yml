@@ -47,7 +47,7 @@ jobs:
         distro: ubuntu20.04
         run: | 
          apt-get update && apt-get install -y openjdk-11-jdk || true
-         export JDK_JAVA_OPTIONS='-XX:-UseCompiler'
+         export JDK_JAVA_OPTIONS='-Xjit:verbose -Xjit:optlevel=cold'
          apt-get install -y wget curl 
          wget https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.3/apache-maven-3.6.3-bin.tar.gz 
          tar -xzf apache-maven-3.6.3-bin.tar.gz  
